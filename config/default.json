@@ -1,0 +1,8 @@
+{
+  "APPLICATION": {
+    "PORT": "8000"
+  },
+  "DB": {
+    "URL": "mongodb+srv://vinamra:ohiforgot@cluster0.b0khy.mongodb.net/charitable"
+  }
+}

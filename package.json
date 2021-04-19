@@ -1,0 +1,32 @@
+{
+  "name": "charitable-backend",
+  "version": "1.0.0",
+  "description": "A backend for CharitAble application based on nodejs  and fastify.",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vsareen0/charitable-backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Vsareen0/charitable-backend/issues"
+  },
+  "homepage": "https://github.com/Vsareen0/charitable-backend#readme",
+  "dependencies": {
+    "config": "^3.3.6",
+    "dayjs": "^1.10.4",
+    "fastify": "^3.14.2",
+    "fastify-mongoose": "^0.3.0",
+    "fastify-plugin": "^3.0.0",
+    "make-promises-safe": "^5.1.0",
+    "mongoose": "^5.12.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
