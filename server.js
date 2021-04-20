@@ -8,7 +8,9 @@ const app = fastify({ ignoreTrailingSlash: true });
 // Register Database with fastify
 app
   .register(require("./config/db.js"), {
-    url: config.get("DB.URL"),
+    name: config.get("DB.NAME"),
+    username: config.get("DB.USERNAME"),
+    password: config.get("DB.PASSWORD"),
   })
   .ready();
 

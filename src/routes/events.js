@@ -17,6 +17,16 @@ module.exports = function (instance, opts, done) {
     handler: eventController.findAll,
   });
 
+  // Route to fetch all events.
+  instance.get("/findBy", {
+    // Used to validate and serialize response and body
+    schema: {
+      params: EventSchema.findByParamsOpts,
+    },
+    // Handles the operation
+    handler: eventController.findBy,
+  });
+
   // Route to check if user exist update his/her profile, otherwise create.
   instance.post("/", {
     // Used to validate and serialize response and body

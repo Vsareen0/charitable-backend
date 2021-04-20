@@ -48,16 +48,12 @@ exports.deleteResponseOpts = {
   },
 };
 
-// exports.findByParamsOpts = {
-//   type: "object",
-//   properties: {
-//     movie_id: { type: "number" },
-//     title: { type: "string" },
-//     release_date: { type: "string" },
-//     distributor: { type: "string" },
-//     genre: { type: "string" },
-//     director: { type: "string" },
-//     imdb_rating: { type: "number" },
-//     page: { type: "number" },
-//   },
-// };
+exports.findByParamsOpts = {
+  type: "object",
+  properties: {
+    name: { type: "number" },
+    created_by: { type: "string" },
+    sponsored_by: { type: "array" },
+    location: { type: "string" },
+  },
+};
