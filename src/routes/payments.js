@@ -12,7 +12,11 @@ module.exports = function (instance, opts, done) {
   // Route to fetch all payments.
   instance.get("/", {
     // Used to validate and serialize response and body
-    schema: {},
+    schema: {
+      description: "Get all payments limited to 5 entries per page",
+      tags: ["payments"],
+      summary: "Get all payments",
+    },
     // Handles the operation
     handler: paymentsController.findAll,
   });
@@ -22,6 +26,9 @@ module.exports = function (instance, opts, done) {
     // Used to validate and serialize response and body
     schema: {
       params: PaymentSchema.findByParamsOpts,
+      description: "Get payments by condition limited to 5 entries per page",
+      tags: ["payments"],
+      summary: "Find payments by condition",
     },
     // Handles the operation
     handler: paymentsController.findBy,
@@ -30,7 +37,12 @@ module.exports = function (instance, opts, done) {
   // Route to payment.
   instance.post("/:id", {
     // Used to validate and serialize response and body
-    schema: {},
+    schema: {
+      body: PaymentSchema.createBodyOpts,
+      description: "Create a payment",
+      tags: ["payments"],
+      summary: "Create payment",
+    },
     // Handles the operation
     handler: paymentsController.create,
   });
@@ -40,6 +52,9 @@ module.exports = function (instance, opts, done) {
     schema: {
       body: PaymentSchema.deleteBodyOpts,
       response: PaymentSchema.deleteResponseOpts,
+      description: "Delete payment by id",
+      tags: ["payments"],
+      summary: "Deletes payment",
     },
     handler: paymentsController.delete,
   });

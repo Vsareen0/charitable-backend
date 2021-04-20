@@ -21,6 +21,21 @@ const paymentProperties = {
   },
 };
 
+exports.createBodyOpts = {
+  type: "object",
+  paymentProperties,
+};
+
+exports.createResponseOpts = {
+  "2xx": {
+    type: "object",
+    properties: {
+      message: { type: "string" },
+      payment: { type: "object" },
+    },
+  },
+};
+
 exports.deleteBodyOpts = {
   type: "object",
   properties: {

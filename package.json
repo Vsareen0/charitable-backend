@@ -23,6 +23,7 @@
     "fastify": "^3.14.2",
     "fastify-mongoose": "^0.3.0",
     "fastify-plugin": "^3.0.0",
+    "fastify-swagger": "^4.6.0",
     "make-promises-safe": "^5.1.0",
     "mongoose": "^5.12.4",
     "stripe": "^8.144.0"

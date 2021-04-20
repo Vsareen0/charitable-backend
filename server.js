@@ -1,6 +1,8 @@
 // Get configuration
 const config = require("config");
 const fastify = require("fastify");
+const swagger = require("./config/swagger");
+
 require("make-promises-safe");
 // Create an instance of fastify
 const app = fastify({ ignoreTrailingSlash: true });
@@ -14,10 +16,13 @@ app
   })
   .ready();
 
+// Swagger for API Documentation
+app.register(require("fastify-swagger"), swagger.options);
+
 // Register routes
 app.register(require("./src/routes/index"), { prefix: "/api/v1/" });
-app.register(require("./src/routes/events"), { prefix: "/api/v1/events/" });
 app.register(require("./src/routes/users"), { prefix: "/api/v1/users/" });
+app.register(require("./src/routes/events"), { prefix: "/api/v1/events/" });
 app.register(require("./src/routes/payments"), { prefix: "/api/v1/payments/" });
 
 // Initialize the server

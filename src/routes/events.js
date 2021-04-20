@@ -12,7 +12,12 @@ module.exports = function (instance, opts, done) {
   // Route to fetch all events.
   instance.get("/", {
     // Used to validate and serialize response and body
-    schema: {},
+    schema: {
+      description:
+        "Find All events by pagination limited to  5 entries per page",
+      tags: ["events"],
+      summary: "Returns all the events",
+    },
     // Handles the operation
     handler: eventController.findAll,
   });
@@ -22,28 +27,27 @@ module.exports = function (instance, opts, done) {
     // Used to validate and serialize response and body
     schema: {
       params: EventSchema.findByParamsOpts,
+      description:
+        "Find events by condition, pagination limited to  5 entries per page",
+      tags: ["events"],
+      summary: "Returns the events by condition",
     },
     // Handles the operation
     handler: eventController.findBy,
   });
 
-  // Route to check if user exist update his/her profile, otherwise create.
+  // Route to create event.
   instance.post("/", {
     // Used to validate and serialize response and body
     schema: {
       body: EventSchema.createBodyOpts,
       response: EventSchema.createResponseOpts,
+      description: "Create an event",
+      tags: ["events"],
+      summary: "Create an event",
     },
     // Handles the operation
     handler: eventController.create,
-  });
-
-  // Route to payment.
-  instance.post("/:id/payment", {
-    // Used to validate and serialize response and body
-    schema: {},
-    // Handles the operation
-    handler: eventController.payment,
   });
 
   // Route to remove event, if exist.
@@ -51,6 +55,9 @@ module.exports = function (instance, opts, done) {
     schema: {
       body: EventSchema.deleteBodyOpts,
       response: EventSchema.deleteResponseOpts,
+      description: "Delete an event",
+      tags: ["events"],
+      summary: "Delete the event",
     },
     handler: eventController.delete,
   });

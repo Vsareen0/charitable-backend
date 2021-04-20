@@ -15,7 +15,7 @@ class UserController {
   }
 
   // Create or update user
-  createOrUpdate = async (req, reply) => {
+  create = async (req, reply) => {
     // Validate the response and body of route, helps achieve higher throughput
     // if pre-initialzed
     if (req.validationError) {

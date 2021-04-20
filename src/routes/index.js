@@ -3,7 +3,18 @@ const { indexOpts } = require("../schemas/index");
 
 module.exports = function (instance, opts, done) {
   // Home Page
-  instance.get("/", indexOpts, IndexController.home);
+  instance.get(
+    "/",
+    {
+      schema: {
+        response: indexOpts,
+        description: "Home route",
+        tags: ["index"],
+        summary: "Home route that checks server connection",
+      },
+    },
+    IndexController.home
+  );
 
   done();
 };

@@ -15,9 +15,12 @@ module.exports = function (instance, opts, done) {
     schema: {
       body: UserSchema.createBodyOpts,
       response: UserSchema.createResponseOpts,
+      description: "Create a user ",
+      tags: ["users"],
+      summary: "Create a user",
     },
     // Handles the operation
-    handler: userController.createOrUpdate,
+    handler: userController.create,
   });
 
   // Route to remove user, if exist.
@@ -25,6 +28,9 @@ module.exports = function (instance, opts, done) {
     schema: {
       body: UserSchema.deleteBodyOpts,
       response: UserSchema.deleteResponseOpts,
+      description: "Delete a User",
+      tags: ["users"],
+      summary: "Delete Users",
     },
     handler: userController.delete,
   });
