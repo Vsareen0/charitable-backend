@@ -2,7 +2,7 @@ const fp = require("fastify-plugin");
 const mongoose = require("mongoose");
 
 const mongo = (fastify, opts, done) => {
-  mongoose.set("debug", true);
+  // mongoose.set("debug", true);
   mongoose.set("useUnifiedTopology", true);
   mongoose.set("useNewUrlParser", true);
 

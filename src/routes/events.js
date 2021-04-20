@@ -38,6 +38,14 @@ module.exports = function (instance, opts, done) {
     handler: eventController.create,
   });
 
+  // Route to payment.
+  instance.post("/:id/payment", {
+    // Used to validate and serialize response and body
+    schema: {},
+    // Handles the operation
+    handler: eventController.payment,
+  });
+
   // Route to remove event, if exist.
   instance.delete("/", {
     schema: {

@@ -6,5 +6,9 @@
     "USERNAME": "vinamra",
     "PASSWORD": "ohiforgot",
     "NAME": "charitable"
+  },
+  "STRIPE": {
+    "PUBLISHABLE_KEY": "pk_test_51IiCLhSCMiRl8J6iMpJatcL2HQAEetwuQn0zlXvsnfAJNAo1gBCCFYeFeetmYkbMtD9WRzktl3L4uVgsAUe7kbdC00RDqc4DYY",
+    "SECRET_KEY": "sk_test_51IiCLhSCMiRl8J6i84YEDSDz3wqUXEfxgLohsTR4rPhE4TQ2Oi5eaNAyFGn3BseaNDaktYI9KYW3tklf1vsd0ygL00Rff40lYX"
   }
 }

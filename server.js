@@ -18,6 +18,7 @@ app
 app.register(require("./src/routes/index"), { prefix: "/api/v1/" });
 app.register(require("./src/routes/events"), { prefix: "/api/v1/events/" });
 app.register(require("./src/routes/users"), { prefix: "/api/v1/users/" });
+app.register(require("./src/routes/payments"), { prefix: "/api/v1/payments/" });
 
 // Initialize the server
 const PORT = config.get("APPLICATION.PORT");
