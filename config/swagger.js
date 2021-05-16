@@ -1,0 +1,83 @@
+exports.options = {
+  routePrefix: "/documentation",
+  exposeRoute: true,
+  swagger: {
+    info: {
+      title: "CharitAble",
+      description: "CharitAble backend API in Node.js and fastify",
+      version: "1.0.0",
+    },
+    externalDocs: {
+      url: "https://swagger.io",
+      description: "Find more info here",
+    },
+    host: "localhost",
+    port: "8000",
+    schemes: ["http"],
+    consumes: ["application/json"],
+    produces: ["application/json"],
+    tags: [
+      { name: "index", description: "Home page related end-points" },
+      { name: "users", description: "User related end-points" },
+      { name: "events", description: "Events related end-points" },
+      { name: "payments", description: "Payments related end-points" },
+    ],
+    definitions: {
+      User: {
+        type: "object",
+        properties: {
+          first_name: { type: "string" },
+          last_name: { type: "string" },
+          password: { type: "string" },
+          mobile: { type: "string" },
+          email: { type: "string" },
+          dob: { type: "string" },
+          username: { type: "string" },
+          added_on: { type: "string" },
+          modified_on: { type: "string" },
+          linux_added_on: { type: "integer" },
+          linux_modified_on: { type: "integer" },
+        },
+      },
+      Event: {
+        type: "object",
+        properties: {
+          name: { type: "string" },
+          description: { type: "number" },
+          created_by: { type: "number" },
+          sponsored_by: { type: "number" },
+          location: {
+            type: "object",
+            properties: {
+              city: { type: "string" },
+              state: { type: "string" },
+              country: { type: "string" },
+            },
+          },
+        },
+      },
+      Payment: {
+        type: "object",
+        properties: {
+          user: { type: "string" },
+          event: { type: "string" },
+          email: { type: "string" },
+          amount: { type: "number" },
+          payment_id: { type: "string" },
+          payment_mode: { type: "string" },
+          payment_method: { type: "string" },
+          description: { type: "string" },
+          currency: { type: "string" },
+          customer: { type: "string" },
+          status: { type: "string" },
+          receipt_url: { type: "string" },
+          transaction_id: { type: "string" },
+          more_details: { type: "object" },
+          linux_added_on: { type: "number" },
+          linux_modified_on: { type: "number" },
+        },
+      },
+    },
+  },
+  exposeRoute: true,
+};
