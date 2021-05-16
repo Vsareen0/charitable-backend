@@ -10,5 +10,13 @@
   "STRIPE": {
     "PUBLISHABLE_KEY": "pk_test_51IiCLhSCMiRl8J6iMpJatcL2HQAEetwuQn0zlXvsnfAJNAo1gBCCFYeFeetmYkbMtD9WRzktl3L4uVgsAUe7kbdC00RDqc4DYY",
     "SECRET_KEY": "sk_test_51IiCLhSCMiRl8J6i84YEDSDz3wqUXEfxgLohsTR4rPhE4TQ2Oi5eaNAyFGn3BseaNDaktYI9KYW3tklf1vsd0ygL00Rff40lYX"
+  },
+  "AWS": {
+    "ID": "AKIA2XQPLH2VPMSUZLAD",
+    "SECRET": "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",
+    "BUCKET": "charitable-crowdfunding"
+  },
+  "DOMAIN": {
+    "FRONTEND": "http://localhost:3000/checkout"
   }
 }

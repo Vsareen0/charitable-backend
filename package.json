@@ -18,12 +18,17 @@
   },
   "homepage": "https://github.com/Vsareen0/charitable-backend#readme",
   "dependencies": {
+    "aws-sdk": "^2.902.0",
     "config": "^3.3.6",
     "dayjs": "^1.10.4",
     "fastify": "^3.14.2",
+    "fastify-cors": "^5.2.0",
     "fastify-mongoose": "^0.3.0",
+    "fastify-multipart": "^4.0.5",
     "fastify-plugin": "^3.0.0",
     "fastify-swagger": "^4.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.21",
     "make-promises-safe": "^5.1.0",
     "mongoose": "^5.12.4",
     "stripe": "^8.144.0"

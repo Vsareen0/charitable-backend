@@ -7,6 +7,12 @@ require("make-promises-safe");
 // Create an instance of fastify
 const app = fastify({ ignoreTrailingSlash: true });
 
+app.register(require("fastify-cors"), {
+  origin: true,
+  methods: "Get,PUT,POST,DELETE",
+  allowHeaders: "Content-Type",
+});
+
 // Register Database with fastify
 app
   .register(require("./config/db.js"), {
@@ -18,6 +24,26 @@ app
 
 // Swagger for API Documentation
 app.register(require("fastify-swagger"), swagger.options);
+
+// Allow files
+app.register(require("fastify-multipart"));
+
+app.addContentTypeParser(
+  "application/json",
+  { parseAs: "string" },
+  function (req, body, done) {
+    try {
+      var newBody = {
+        raw: body,
+        parsed: JSON.parse(body),
+      };
+      done(null, newBody);
+    } catch (error) {
+      error.statusCode = 400;
+      done(error, undefined);
+    }
+  }
+);
 
 // Register routes
 app.register(require("./src/routes/index"), { prefix: "/api/v1/" });

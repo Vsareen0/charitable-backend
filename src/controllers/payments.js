@@ -30,14 +30,18 @@ class PaymentsController {
       reply.code(400).send(req.validationError);
     }
 
-    const payments = await Payments.find();
-    reply.code(200).send({
-      statusCode: 200,
-      data: payments,
-      message: `${
-        payments.length >= 1 ? "List of payments" : "No Payments created yet."
-      }`,
-    });
+    console.log("payment: ", req.query);
+
+    let payments = null;
+    if (Object.keys(req.query).length > 0) {
+      payments = await Payments.find(paymentsCondition(req.query))
+        .populate("user")
+        .populate("event");
+    } else {
+      payments = await Payments.find();
+    }
+
+    reply.code(200).send({ payments });
   };
 
   /**
@@ -54,40 +58,29 @@ class PaymentsController {
       reply.code(400).send(req.validationError);
     }
 
-    let { page = 1 } = req.query;
+    // let { page = 1 } = req.query;
 
-    // Get count of all payments found by condition
-    const count = await Payments.count(paymentsCondition(req.query));
+    // // Get count of all payments found by condition
+    // const count = await Payments.count(paymentsCondition(req.query));
 
-    // console.log(count);
+    // // console.log(count);
 
-    /* Pagination */
-    const { canPaginate, limit, offset, maxPages } = paginate(count, page, 5);
+    // /* Pagination */
+    // const { canPaginate, limit, offset, maxPages } = paginate(count, page, 5);
 
-    if (!canPaginate) {
-      reply.send({
-        statusCode: 200,
-        message: `The page you are trying to go doesn\'t exist, Make sure the page you are trying to reach is in range 1-${maxPages}`,
-      });
-    }
+    // if (!canPaginate) {
+    //   reply.send({
+    //     statusCode: 200,
+    //     message: `The page you are trying to go doesn\'t exist, Make sure the page you are trying to reach is in range 1-${maxPages}`,
+    //   });
+    // }
     /** Pagination ends here */
 
     const res = await Payments.find(paymentsCondition(req.query))
       .populate("user")
-      .populate("event")
-      .skip(offset)
-      .limit(limit);
+      .populate("event");
 
-    reply.send({
-      statusCode: 200,
-      data: {
-        payments: res,
-        length: count,
-        currPage: page,
-        totalPages: maxPages,
-      },
-      message: `Total ${count} payments found, ${res.length} payments found on page no. ${page}`,
-    });
+    reply.send(res);
   };
 
   /**

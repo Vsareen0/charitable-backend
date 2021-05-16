@@ -35,7 +35,7 @@ module.exports = function (instance, opts, done) {
   });
 
   // Route to payment.
-  instance.post("/:id", {
+  instance.post("/", {
     // Used to validate and serialize response and body
     schema: {
       body: PaymentSchema.createBodyOpts,

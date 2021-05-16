@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 const dayjs = require("dayjs")();
+const jwt = require("jsonwebtoken");
+const _ = require("lodash");
 
 const UserSchema = new mongoose.Schema(
   {
@@ -21,15 +23,16 @@ const UserSchema = new mongoose.Schema(
   }
 );
 
+UserSchema.methods.authenticate = function (res, username, password) {
+  if (res.username == username && res.password == password) {
+    delete res.password;
+    const token = jwt.sign(res, "charitable");
+    return token;
+  } else {
+    return null;
+  }
+};
+
 const User = mongoose.model("User", UserSchema, "user");
-
-// User.prototype.authenticate = ({ username, password }) => {
-//   const res = this.findOne({
-//     username,
-//   });
-
-//   if (username != null) {
-//   }
-// };
 
 module.exports = User;

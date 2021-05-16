@@ -27,7 +27,7 @@ exports.createResponseOpts = {
 
 exports.createBodyOpts = {
   type: "object",
-  eventsProperties,
+  ...eventsProperties,
   required: ["name", "description", "created_by", "sponsored_by", "location"],
 };
 
@@ -35,7 +35,6 @@ exports.deleteBodyOpts = {
   type: "object",
   properties: {
     id: { type: "string" },
-    name: { type: "string" },
   },
 };
 
@@ -53,7 +52,7 @@ exports.findByParamsOpts = {
   properties: {
     name: { type: "number" },
     created_by: { type: "string" },
-    sponsored_by: { type: "array" },
+    sponsored_by: { type: "string" },
     location: { type: "string" },
   },
 };

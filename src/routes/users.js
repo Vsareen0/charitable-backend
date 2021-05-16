@@ -9,6 +9,24 @@ const UserSchema = require("../schemas/users");
 module.exports = function (instance, opts, done) {
   const userController = new UserController();
 
+  instance.get("/", {
+    schema: {
+      description: "Get users ",
+      tags: ["users"],
+      summary: "Get users",
+    },
+    handler: userController.get,
+  });
+
+  instance.post("/authenticate", {
+    schema: {
+      description: "Authenticate User ",
+      tags: ["users"],
+      summary: "Authenticate users",
+    },
+    handler: userController.auth,
+  });
+
   // Route to check if user exist update his/her profile, otherwise create.
   instance.post("/", {
     // Used to validate and serialize response and body
@@ -21,6 +39,17 @@ module.exports = function (instance, opts, done) {
     },
     // Handles the operation
     handler: userController.create,
+  });
+
+  instance.post("/update", {
+    // Used to validate and serialize response and body
+    schema: {
+      description: "Update a user ",
+      tags: ["users"],
+      summary: "Update a user",
+    },
+    // Handles the operation
+    handler: userController.update,
   });
 
   // Route to remove user, if exist.

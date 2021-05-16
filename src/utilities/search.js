@@ -1,24 +1,38 @@
 let daysjs = require("dayjs");
-let mongoose = require("mongoose");
 
 const eventsCondition = (fields) => {
   let {
-    name = null,
-    created_by = null,
+    cause_name = null,
+    cause_type = null,
+    creator = null,
     sponsored_by = null,
     location = null,
+    _id = null,
   } = fields;
 
   return {
     $and: [
-      name != null
+      _id != null
         ? {
-            name: { $regex: `.*${name}*.` },
+            _id,
           }
         : {},
-      created_by != null
+      cause_name != null
         ? {
-            created_by: { $regex: `.*${created_by}*.` },
+            cause_name: { $regex: `.*${cause_name}*.` },
+          }
+        : {},
+      cause_type != null
+        ? {
+            cause_type: { $regex: `.*${cause_type}*.` },
+          }
+        : {},
+      creator != null
+        ? {
+            $or: [
+              { "creator.name": { $regex: `.*${creator}*.` } },
+              { "creator.email": { $regex: `.*${creator}*.` } },
+            ],
           }
         : {},
       sponsored_by != null

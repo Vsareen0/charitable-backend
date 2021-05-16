@@ -43,19 +43,19 @@ exports.createBodyOpts = {
     linux_added_on: { type: "integer" },
     linux_modified_on: { type: "integer" },
   },
-  required: [
-    "first_name",
-    "last_name",
-    "password",
-    "mobile",
-    "email",
-    "dob",
-    "username",
-    "added_on",
-    "modified_on",
-    "linux_added_on",
-    "linux_modified_on",
-  ],
+  // required: [
+  //   "first_name",
+  //   "last_name",
+  //   "password",
+  //   "mobile",
+  //   "email",
+  //   "dob",
+  //   "username",
+  //   "added_on",
+  //   "modified_on",
+  //   "linux_added_on",
+  //   "linux_modified_on",
+  // ],
 };
 
 exports.deleteResponseOpts = {

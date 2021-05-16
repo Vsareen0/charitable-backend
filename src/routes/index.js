@@ -1,4 +1,6 @@
 const IndexController = require("../controllers/index");
+const Event = require("../models/events");
+const Payment = require("../models/payments");
 const { indexOpts } = require("../schemas/index");
 
 module.exports = function (instance, opts, done) {
@@ -15,6 +17,22 @@ module.exports = function (instance, opts, done) {
     },
     IndexController.home
   );
+
+  instance.get("/home", async (req, reply) => {
+    const raised = await Payment.aggregate([
+      {
+        $group: {
+          _id: null,
+          total_amount: { $sum: "$amount" },
+        },
+      },
+    ]);
+
+    const donations = await Payment.count();
+    const fundraisers = await Event.count();
+
+    reply.code(200).send({ raised, donations, fundraisers });
+  });
 
   done();
 };

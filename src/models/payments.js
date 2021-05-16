@@ -20,7 +20,7 @@ const PaymentSchema = new mongoose.Schema(
     payment_method: { type: String, required: true },
     description: String,
     currency: { type: String, required: true },
-    customer: { type: String, required: true },
+    // customer: { type: String, required: true },
     status: { type: String, required: true },
     receipt_url: { type: String, required: true },
     transaction_id: { type: String, required: true },
