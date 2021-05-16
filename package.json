@@ -4,7 +4,7 @@
   "description": "A backend for CharitAble application based on nodejs  and fastify.",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
